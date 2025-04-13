@@ -1,0 +1,152 @@
+version: '3.8'
+
+services:
+  config-server:
+    build:
+      context: .
+      dockerfile: configuration/Dockerfile
+    ports:
+      - "8888:8888"
+    container_name: config-server
+    networks:
+      - shorten-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8888/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+
+  eureka-server:
+    build:
+      context: .
+      dockerfile: eureka-api/Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: eureka-server
+    depends_on:
+      config-server:
+        condition: service_healthy
+    environment:
+      SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8888
+    networks:
+      - shorten-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  db:
+    image: mysql:8.0
+    container_name: mysql-db
+    ports:
+      - "3306:3306" # Mapea para acceso externo (opcional)
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_DATABASE: shortener
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - shorten-net
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-p123"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  cache:
+    image: redis:6.2-alpine
+    container_name: redis-cache
+    ports:
+      - "6379:6379" # Mapea para acceso externo (opcional)
+    networks:
+      - shorten-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  write-api:
+    build:
+      context: .
+      dockerfile: write-api/Dockerfile
+    ports:
+      - "8082:8082"
+    container_name: write-api
+    depends_on:
+      config-server:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8888
+    networks:
+      - shorten-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8082/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+
+  read-api:
+    build:
+      context: .
+      dockerfile: read-api/Dockerfile
+    ports:
+      - "8081:8081"
+    container_name: read-api
+    depends_on:
+      config-server:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+      db:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+    environment:
+      SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8888
+    networks:
+      - shorten-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+
+  gateway:
+    build:
+      context: .
+      dockerfile: gateway-api/Dockerfile
+    ports:
+      - "8083:8083"
+    container_name: gateway-api
+    depends_on:
+      config-server:
+        condition: service_healthy
+      eureka-server:
+        condition: service_healthy
+    environment:
+      SPRING_CONFIG_IMPORT: optional:configserver:http://config-server:8888
+    networks:
+      - shorten-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8083/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+
+networks:
+  shorten-net:
+    driver: bridge
+
+volumes:
+  mysql_data:

@@ -13,13 +13,19 @@ spring:
           enabled: true
       routes:
         - id: read-api
-          uri: http://localhost:8081
+          uri: lb://READ-API
           predicates:
-            - Path=/api/read/**
+            - Path=/read/**
         - id: write-api
-          uri: http://localhost:8082
+          uri: lb://WRITE-API
           predicates:
-            - Path=/api/write/**
+            - Path=/write/**
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8080/eureka/
 
 
 logging:
@@ -28,7 +34,3 @@ logging:
     reactor.netty.http.client: DEBUG
 
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8080/eureka/

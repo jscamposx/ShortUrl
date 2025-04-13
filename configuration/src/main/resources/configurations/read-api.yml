@@ -1,32 +1,23 @@
-server:
-  port: 8081
-
 spring:
   application:
     name: read-api
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/shortener?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://db:3306/shortener?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
-    password:
+    password: 123
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
+  redis:
+    host: cache
+    port: 6379
 
+  cache:
+    type: redis
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8080/eureka/
-
-cache:
-  type: redis
-data:
-  redis:
-    host: localhost
-    port: 6379
-    time-to-live: 3600000
+      defaultZone: http://eureka-server:8080/eureka/

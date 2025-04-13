@@ -11,7 +11,7 @@ import com.write_api.service.UrlService;
 
 @RestController
 
-@RequestMapping("/api/write")
+@RequestMapping("/write")
 public class UrlController {
     private final UrlService service;
 
