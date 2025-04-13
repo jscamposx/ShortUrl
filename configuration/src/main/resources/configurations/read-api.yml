@@ -22,3 +22,11 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8080/eureka/
+
+cache:
+  type: redis
+data:
+  redis:
+    host: localhost
+    port: 6379
+    time-to-live: 3600000
