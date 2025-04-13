@@ -17,6 +17,7 @@ public class UrlService {
 
     @Cacheable(value = "longUrls", key = "#shortUrl")
     public String getLongUrl(String shortUrl) {
+        System.out.println(">>> Buscando en BD para shortUrl: " + shortUrl);
         return urlRepository.findById(shortUrl)
                 .map(Url::getLongUrl)
                 .orElseThrow(() -> new RuntimeException("URL no encontrada"));
