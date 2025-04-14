@@ -28,9 +28,6 @@ eureka:
       defaultZone: http://eureka-server:8080/eureka/
 
 
-logging:
-  level:
-    org.springframework.cloud.gateway: DEBUG
-    reactor.netty.http.client: DEBUG
+
 
 

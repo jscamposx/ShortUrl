@@ -10,6 +10,8 @@ FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
 
+RUN apk add --no-cache curl
+
 COPY --from=builder /workspace/write-api/target/write-api-*.jar app.jar
 
 EXPOSE 8082

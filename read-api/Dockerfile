@@ -10,8 +10,11 @@ FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
 
+RUN apk add --no-cache netcat-openbsd
+RUN apk add --no-cache curl
+
 COPY --from=builder /workspace/read-api/target/read-api-*.jar app.jar
 
-EXPOSE 8081
+EXPOSE 8090
 
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+ENTRYPOINT ["sh", "-c", "echo '>>> Waiting 21s before starting Java application...' && sleep 21 && java -jar /app/app.jar"]

@@ -1,3 +1,6 @@
+server:
+  port: 8090
+
 spring:
   application:
     name: read-api
@@ -13,9 +16,15 @@ spring:
   redis:
     host: cache
     port: 6379
+    timeout: 10000
 
-  cache:
-    type: redis
+
+
+logging:
+  level:
+    io.lettuce.core: DEBUG
+    org.springframework.data.redis: DEBUG
+
 
 eureka:
   client:

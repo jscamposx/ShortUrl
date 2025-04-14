@@ -9,6 +9,7 @@ RUN mvn clean package -pl :eureka-api -am -DskipTests
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
+RUN apk add --no-cache curl
 
 COPY --from=builder /workspace/eureka-api/target/eureka-api-*.jar app.jar
 

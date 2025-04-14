@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: read-api # Es bueno definirlo aquí también
+  cloud:
+    config:
+      uri: http://configuration:8888 # URI explícito del config server
+      fail-fast: true

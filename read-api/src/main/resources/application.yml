@@ -1,5 +1,0 @@
-spring:
-  application:
-    name: read-api
-  config:
-    import: optional:configserver:http://configuration:8888
