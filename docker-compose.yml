@@ -122,6 +122,8 @@ services:
         condition: service_healthy
       eureka-server:
         condition: service_healthy
+      cache:
+        condition: service_healthy
     environment:
       SPRING_CONFIG_IMPORT: optional:configserver:http://configuration:8888
     networks:

@@ -1,4 +1,4 @@
-package com.read_api.config;
+package com.api_gateway.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,8 +15,8 @@ public class RedisConfig {
 
     @Bean
     public LettuceConnectionFactory redisConnectionFactory() {
-        String redisHost = environment.getProperty("spring.redis.host", "localhost");
-        int redisPort = environment.getProperty("spring.redis.port", Integer.class, 6379);
+        String redisHost = environment.getProperty("spring.redis.host", "localhost"); // Default a localhost si no se encuentra
+        int redisPort = environment.getProperty("spring.redis.port", Integer.class, 6379); // Default a 6379
         RedisStandaloneConfiguration redisConfig = new RedisStandaloneConfiguration();
         redisConfig.setHostName(redisHost);
         redisConfig.setPort(redisPort);
