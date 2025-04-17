@@ -4,8 +4,6 @@ services:
     build:
       context: .
       dockerfile: configuration/Dockerfile
-    ports:
-      - "8888:8888"
     container_name: configuration
     networks:
       - shorten-net
@@ -20,8 +18,6 @@ services:
     build:
       context: .
       dockerfile: eureka-api/Dockerfile
-    ports:
-      - "8080:8080"
     container_name: eureka-server
     depends_on:
       configuration:
@@ -40,13 +36,12 @@ services:
   db:
     image: mysql:8.0
     container_name: mysql-db
-    ports:
-      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: 123
       MYSQL_DATABASE: shortener
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d
     networks:
       - shorten-net
     healthcheck:
@@ -58,8 +53,6 @@ services:
   cache:
     image: redis:7.4.2
     container_name: cache
-    ports:
-      - "6379:6379"
     networks:
       - shorten-net
     command: ["redis-server", "--loglevel", "debug"]
@@ -73,8 +66,6 @@ services:
     build:
       context: .
       dockerfile: write-api/Dockerfile
-    ports:
-      - "8082:8082"
     container_name: write-api
     depends_on:
       configuration:
@@ -98,8 +89,6 @@ services:
     build:
       context: .
       dockerfile: read-api/Dockerfile
-    ports:
-      - "8090:8090"
     container_name: read-api
     depends_on:
       configuration:
