@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: read-api
+  cloud:
+    config:
+      uri: http://configuration:8888
+      fail-fast: true

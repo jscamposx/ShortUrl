@@ -1,5 +1,5 @@
 server:
-  port: 8090
+  port: 8081
 
 spring:
   application:
@@ -7,23 +7,18 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://db:3306/shortener?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    username: root
-    password: 123
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQLDialect
   redis:
     host: cache
     port: 6379
     timeout: 10000
 
-
-
-logging:
-  level:
-    io.lettuce.core: DEBUG
-    org.springframework.data.redis: DEBUG
 
 
 eureka:

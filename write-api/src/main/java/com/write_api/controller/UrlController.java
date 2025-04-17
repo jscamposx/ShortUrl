@@ -1,16 +1,11 @@
 package com.write_api.controller;
 
-
 import com.write_api.model.Url;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.write_api.service.UrlService;
 
-
-
 @RestController
-
 @RequestMapping("/write")
 public class UrlController {
     private final UrlService service;

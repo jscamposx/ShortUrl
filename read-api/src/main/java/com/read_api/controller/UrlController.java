@@ -16,9 +16,9 @@ public class UrlController {
         this.urlService = urlService;
     }
 
-    @GetMapping("/{shortUrl}")
-    public ResponseEntity<String> getLongUrl(@PathVariable String shortUrl) {
-        String longUrl = urlService.getLongUrl(shortUrl);
+    @GetMapping("/{shortId}")
+    public ResponseEntity<String> getLongUrl(@PathVariable String shortId) {
+        String longUrl = urlService.getLongUrl(shortId);
         return ResponseEntity.ok(longUrl);
     }
 }

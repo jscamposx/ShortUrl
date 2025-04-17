@@ -1,10 +1,8 @@
 package com.write_api.service;
 
-
 import com.write_api.model.Url;
 import org.springframework.stereotype.Service;
 import com.write_api.repository.UrlRepository;
-
 import java.security.SecureRandom;
 import java.time.LocalDate;
 

@@ -7,13 +7,14 @@ spring:
     name: write-api
   datasource:
     url: jdbc:mysql://db:3306/shortener?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    username: root
-    password: 123
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQLDialect
 
 
 
