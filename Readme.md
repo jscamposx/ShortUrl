@@ -4,21 +4,21 @@ Este proyecto implementa un backend para un servicio acortador de URLs utilizand
 
 ## 📜 Índice
 
-* [🚀 Resumen General](#1-resumen-general)
-* [🛠️ Tecnologías Utilizadas](#2-tecnologías-utilizadas)
-* [🏛️ Arquitectura de Microservicios](#3-arquitectura-de-microservicios)
-* [➡️ Flujo de Datos Típico](#4-flujo-de-datos-típico)
-* [🧩 Componentes Detallados](#5-componentes-detallados)
-    * [🐳 docker-compose.yml](#51-docker-composeyml)
-    * [⚙️ configuration (Config Server)](#52-configuration-config-server)
-    * [🗺️ eureka-api (Eureka Server)](#53-eureka-api-eureka-server)
-    * [🚪 gateway-api (API Gateway)](#54-gateway-api-api-gateway)
-    * [✍️ write-api](#55-write-api)
-    * [📖 read-api](#56-read-api)
-    * [💾 db (MySQL)](#57-db-mysql)
-    * [⚡ cache (Redis)](#58-cache-redis)
-    * [📄 mysql-init/schema.sql](#59-mysql-initschemasql)
-* [🔧 Configuración y Ejecución](#6-configuración-y-ejecución)
+* [🚀 Resumen General](#resumen-general)
+* [🛠️ Tecnologías Utilizadas](#tecnologías-utilizadas)
+* [🏛️ Arquitectura de Microservicios](#arquitectura-de-microservicios)
+* [➡️ Flujo de Datos Típico](#flujo-de-datos-típico)
+* [🧩 Componentes Detallados](#componentes-detallados)
+    * [🐳 `docker-compose.yml`](#docker-composeyml)
+    * [⚙️ `configuration` (Config Server)](#configuration-config-server)
+    * [🗺️ `eureka-api` (Eureka Server)](#eureka-api-eureka-server)
+    * [🚪 `gateway-api` (API Gateway)](#gateway-api-api-gateway)
+    * [✍️ `write-api`](#write-api)
+    * [📖 `read-api`](#read-api)
+    * [💾 `db` (MySQL)](#db-mysql)
+    * [⚡ `cache` (Redis)](#cache-redis)
+    * [📄 `mysql-init/schema.sql`](#mysql-initschemasql)
+* [🔧 Configuración y Ejecución](#configuración-y-ejecución)
 
 ## 1. 🚀 Resumen General
 
