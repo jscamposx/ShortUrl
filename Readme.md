@@ -4,7 +4,7 @@ Este proyecto implementa un backend para un servicio acortador de URLs utilizand
 
 ## 📑 Índice
 
-* [🚀 Resumen General](#-resumen-general)
+* [🚀 Resumen General](#1--resumen-general)
 * [🛠️ Tecnologías Utilizadas](#2-%EF%B8%8F-tecnologías-utilizadas)
 * [🏛️ Arquitectura de Microservicios](#3-%EF%B8%8F-arquitectura-de-microservicios)
 * [➡️ Flujo de Datos Típico](#4-%EF%B8%8F-flujo-de-datos-típico)
