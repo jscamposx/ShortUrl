@@ -5,9 +5,9 @@ Este proyecto implementa un backend para un servicio acortador de URLs utilizand
 ## 📜 Índice
 
 * [🚀 Resumen General](#resumen-general)
-* [🛠️ Tecnologías Utilizadas](#tecnologías-utilizadas)
+* [🛠️ Tecnologías Utilizadas](#tecnologias-utilizadas) 
 * [🏛️ Arquitectura de Microservicios](#arquitectura-de-microservicios)
-* [➡️ Flujo de Datos Típico](#flujo-de-datos-típico)
+* [➡️ Flujo de Datos Típico](#flujo-de-datos-tipico) 
 * [🧩 Componentes Detallados](#componentes-detallados)
     * [🐳 `docker-compose.yml`](#docker-composeyml)
     * [⚙️ `configuration` (Config Server)](#configuration-config-server)
@@ -18,7 +18,7 @@ Este proyecto implementa un backend para un servicio acortador de URLs utilizand
     * [💾 `db` (MySQL)](#db-mysql)
     * [⚡ `cache` (Redis)](#cache-redis)
     * [📄 `mysql-init/schema.sql`](#mysql-initschemasql)
-* [🔧 Configuración y Ejecución](#configuración-y-ejecución)
+* [🔧 Configuración y Ejecución](#configuracion-y-ejecucion) ```
 
 ## 1. 🚀 Resumen General
 
