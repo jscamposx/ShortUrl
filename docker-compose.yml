@@ -1,4 +1,3 @@
-
 services:
   configuration:
     build:
@@ -15,6 +14,11 @@ services:
       timeout: 10s
       retries: 5
       start_period: 30s
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
 
   eureka-server:
     build:
@@ -34,6 +38,11 @@ services:
       timeout: 10s
       retries: 5
       start_period: 30s
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
 
   db:
     image: mysql:8.0
@@ -51,6 +60,11 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
 
   cache:
     image: redis:7.4.2
@@ -63,6 +77,11 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
 
   write-api:
     build:
@@ -86,6 +105,11 @@ services:
       timeout: 10s
       retries: 5
       start_period: 40s
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
 
   read-api:
     build:
@@ -106,11 +130,16 @@ services:
     networks:
       - shorten-net
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8090/actuator/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
       interval: 30s
       timeout: 10s
       retries: 5
       start_period: 40s
+    deploy: # Añadido
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
 
   gateway:
     build:
@@ -126,6 +155,10 @@ services:
         condition: service_healthy
       cache:
         condition: service_healthy
+      read-api:
+        condition: service_healthy
+      write-api:
+        condition: service_healthy
     environment:
       SPRING_CONFIG_IMPORT: optional:configserver:http://configuration:8888
     networks:
@@ -136,6 +169,11 @@ services:
       timeout: 10s
       retries: 5
       start_period: 40s
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
 
 networks:
   shorten-net:

@@ -1,18 +1,21 @@
 FROM maven:3.9-eclipse-temurin-21 AS builder
-WORKDIR /workspace
 
-COPY . .
+WORKDIR /build
 
-RUN mvn clean package -pl :write-api -am -DskipTests
+COPY pom.xml ./pom.xml
 
-FROM eclipse-temurin:21-jre-alpine
+COPY write-api/pom.xml ./write-api/pom.xml
+
+COPY write-api/src ./write-api/src
+
+RUN mvn -f write-api/pom.xml clean package -DskipTests
+
+FROM eclipse-temurin:21-jre
+
 WORKDIR /app
 
-
-RUN apk add --no-cache curl
-
-COPY --from=builder /workspace/write-api/target/write-api-*.jar app.jar
+COPY --from=builder /build/write-api/target/write-api-*.jar app.jar
 
 EXPOSE 8082
 
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+ENTRYPOINT ["sh", "-c", "java -jar app.jar"]

@@ -1,18 +1,15 @@
-
 FROM maven:3.9-eclipse-temurin-21 AS builder
-WORKDIR /workspace
+WORKDIR /build
+COPY pom.xml ./pom.xml
+COPY configuration/pom.xml ./configuration/pom.xml
 
-COPY . .
+COPY configuration/src ./configuration/src
+RUN mvn -f configuration/pom.xml clean package -DskipTests
 
-RUN mvn clean package -pl :configuration -am -DskipTests
-
-FROM eclipse-temurin:21-jre-alpine
+FROM eclipse-temurin:21-jre
 WORKDIR /app
 
-RUN apk add --no-cache curl
-
-COPY --from=builder /workspace/configuration/target/configuration-*.jar app.jar
-
+COPY --from=builder /build/configuration/target/configuration-*.jar app.jar
 EXPOSE 8888
 
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+ENTRYPOINT ["sh", "-c", "java -jar app.jar"]
