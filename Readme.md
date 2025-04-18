@@ -2,6 +2,9 @@
 
 Este proyecto implementa un backend para un servicio acortador de URLs utilizando una arquitectura de microservicios con Spring Boot y Spring Cloud.
 
+
+![Diagrama de Arquitectura de Shorten-BackEnd](Arquitectura-shorten.png)
+
 ## 📑 Índice
 
 * [🚀 Resumen General](#1--resumen-general)
