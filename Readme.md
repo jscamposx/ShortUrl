@@ -51,11 +51,6 @@ El sistema sigue una arquitectura de microservicios, separando las responsabilid
 6.  **Database (`💾 db`)**: Contenedor MySQL que almacena los mapeos de URL.
 7.  **Cache (`⚡ cache`)**: Contenedor Redis usado para caché de lectura y limitación de tasa.
 
-`👤 Cliente -> 🚪 Gateway -> (📖 Read API | ✍️ Write API)`
-`📖 Read API -> ⚡ Cache (Redis) -> 💾 DB (MySQL)`
-`✍️ Write API -> 💾 DB (MySQL)`
-`🚪 Gateway, 📖 Read API, ✍️ Write API -> 🗺️ Eureka Server`
-`🚪 Gateway, 📖 Read API, ✍️ Write API, 🗺️ Eureka Server -> ⚙️ Config Server`
 
 ## 4. ➡️ Flujo de Datos Típico
 
