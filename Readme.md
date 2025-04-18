@@ -4,21 +4,21 @@ Este proyecto implementa un backend para un servicio acortador de URLs utilizand
 
 ## 📑 Índice
 
-* [🚀 Resumen General](#1--resumen-general)
-* [🛠️ Tecnologías Utilizadas](#-tecnologías-utilizadas)
-* [🏛️ Arquitectura de Microservicios](#-arquitectura-de-microservicios)
-* [➡️ Flujo de Datos Típico](#4-flujo-de-datos-típico)
-* [🧩 Componentes Detallados](#5-🧩-componentes-detallados)
-    * [🐳 docker-compose.yml](#51-docker-composeyml)
-    * [⚙️ configuration (Config Server)](#52-configuration-config-server)
-    * [🗺️ eureka-api (Eureka Server)](#53-eureka-api-eureka-server)
-    * [🚪 gateway-api (API Gateway)](#54-gateway-api-api-gateway)
-    * [✍️ write-api](#55-write-api)
-    * [📖 read-api](#56-read-api)
-    * [💾 db (MySQL)](#57-db-mysql)
-    * [⚡ cache (Redis)](#58-cache-redis)
-    * [📄 mysql-init/schema.sql](#59-mysql-initschemasql)
-* [🔧 Configuración y Ejecución](#6-🔧-configuración-y-ejecución)
+* [🚀 Resumen General](#-resumen-general)
+* [🛠️ Tecnologías Utilizadas](#2-%EF%B8%8F-tecnologías-utilizadas)
+* [🏛️ Arquitectura de Microservicios](#3-%EF%B8%8F-arquitectura-de-microservicios)
+* [➡️ Flujo de Datos Típico](#4-%EF%B8%8F-flujo-de-datos-típico)
+* [🧩 Componentes Detallados](#5--componentes-detallados)
+    * [🐳 docker-compose.yml](#51--docker-composeyml)
+    * [⚙️ configuration (Config Server)](#52-%EF%B8%8F-configuration-config-server)
+    * [🗺️ eureka-api (Eureka Server)](#53-%EF%B8%8F-eureka-api-eureka-server)
+    * [🚪 gateway-api (API Gateway)](#54--gateway-api-api-gateway)
+    * [✍️ write-api](#55-%EF%B8%8F-write-api)
+    * [📖 read-api](#56--read-api)
+    * [💾 db (MySQL)](#57--db-mysql)
+    * [⚡ cache (Redis)](#58--cache-redis)
+    * [📄 mysql-init/schema.sql](#59--mysql-initschemasql)
+* [🔧 Configuración y Ejecución](#6--configuración-y-ejecución)
 
 
 ---
