@@ -5,25 +5,27 @@ Este proyecto implementa un backend para un servicio acortador de URLs utilizand
 ## 📜 Índice
 
 * [🚀 Resumen General](#resumen-general)
-* [🛠️ Tecnologías Utilizadas](#tecnologias-utilizadas) 
+* [🛠️ Tecnologías Utilizadas](#tecnologías-utilizadas)
 * [🏛️ Arquitectura de Microservicios](#arquitectura-de-microservicios)
-* [➡️ Flujo de Datos Típico](#flujo-de-datos-tipico) 
-* [🧩 Componentes Detallados](#componentes-detallados)
-    * [🐳 `docker-compose.yml`](#docker-composeyml)
-    * [⚙️ `configuration` (Config Server)](#configuration-config-server)
-    * [🗺️ `eureka-api` (Eureka Server)](#eureka-api-eureka-server)
-    * [🚪 `gateway-api` (API Gateway)](#gateway-api-api-gateway)
-    * [✍️ `write-api`](#write-api)
-    * [📖 `read-api`](#read-api)
-    * [💾 `db` (MySQL)](#db-mysql)
-    * [⚡ `cache` (Redis)](#cache-redis)
-    * [📄 `mysql-init/schema.sql`](#mysql-initschemasql)
-* [🔧 Configuración y Ejecución](#configuracion-y-ejecucion) ```
+* [➡️ Flujo de Datos Típico](#flujo-de-datos-típico)
+* [🧩 Componentes Detallados](#5-🧩-componentes-detallados)
+    * [🐳 docker-compose.yml](#51-docker-composeyml)
+    * [⚙️ configuration (Config Server)](#52-configuration-config-server)
+    * [🗺️ eureka-api (Eureka Server)](#53-eureka-api-eureka-server)
+    * [🚪 gateway-api (API Gateway)](#54-gateway-api-api-gateway)
+    * [✍️ write-api](#55-write-api)
+    * [📖 read-api](#56-read-api)
+    * [💾 db (MySQL)](#57-db-mysql)
+    * [⚡ cache (Redis)](#58-cache-redis)
+    * [📄 mysql-init/schema.sql](#59-mysql-initschemasql)
+* [🔧 Configuración y Ejecución](#6-🔧-configuración-y-ejecución)
 
+---
 ## 1. 🚀 Resumen General
 
 `Shorten-BackEnd` es un sistema de microservicios diseñado para actuar como un acortador de URLs. Permite a los usuarios enviar una URL larga y recibir una URL corta única 🔗. Posteriormente, al acceder a la URL corta, el sistema devuelve la URL original.
 
+---
 ## 2. 🛠️ Tecnologías Utilizadas
 
 * ☕ **Lenguaje**: Java 21
@@ -39,6 +41,7 @@ Este proyecto implementa un backend para un servicio acortador de URLs utilizand
 * 🏗️ **Construcción**: Apache Maven
 * 📝 **Otros**: Lombok, Jasypt (para encriptación de propiedades 🔒)
 
+---
 ## 3. 🏛️ Arquitectura de Microservicios
 
 El sistema sigue una arquitectura de microservicios, separando las responsabilidades en componentes independientes:
@@ -51,7 +54,7 @@ El sistema sigue una arquitectura de microservicios, separando las responsabilid
 6.  **Database (`💾 db`)**: Contenedor MySQL que almacena los mapeos de URL.
 7.  **Cache (`⚡ cache`)**: Contenedor Redis usado para caché de lectura y limitación de tasa.
 
-
+---
 ## 4. ➡️ Flujo de Datos Típico
 
 * **Acortar una URL: ✍️**
@@ -68,7 +71,7 @@ El sistema sigue una arquitectura de microservicios, separando las responsabilid
     6.  Si la encuentra, la guarda en `⚡ cache` y devuelve `longUrl` ✅.
     7.  Si no la encuentra, devuelve error 404 ❌.
     8.  `📖 read-api` devuelve la respuesta al gateway y este al cliente.
-
+---
 ## 5. 🧩 Componentes Detallados
 
 #### 5.1. 🐳 `docker-compose.yml`
@@ -130,7 +133,7 @@ El sistema sigue una arquitectura de microservicios, separando las responsabilid
     * `short_id` VARCHAR(10) PRIMARY KEY
     * `long_url` TEXT NOT NULL
     * `created_date` DATE NOT NULL
-
+---
 ## 6. 🔧 Configuración y Ejecución
 
 1.  **✅ Prerrequisitos**:
