@@ -185,3 +185,5 @@ El sistema sigue una arquitectura de microservicios, separando las responsabilid
     ```bash
     docker-compose down -v
     ```
+    
+z
