@@ -153,10 +153,8 @@ El sistema sigue una arquitectura de microservicios, separando las responsabilid
     Crea un archivo llamado `.env` en la raíz del proyecto (`Shorten-BackEnd/`) con el siguiente contenido, reemplazando `tu_contraseña_segura` por una contraseña robusta:
     ```dotenv
     MYSQL_PASSWORD=tu_contraseña_segura
-    # Puedes añadir aquí la contraseña para Jasypt si la configuras 🔒
-    # JASYPT_ENCRYPTOR_PASSWORD=tu_otra_contraseña
     ```
-    *(Nota: La configuración de Jasypt requiere definir la contraseña maestra, ya sea vía variable de entorno, argumento de JVM, etc. Si no se define, buscará `JASYPT_ENCRYPTOR_PASSWORD`)*.
+
 
 4.  **🚀 Construir y Ejecutar con Docker Compose**:
     Desde la raíz del proyecto (`Shorten-BackEnd/`), ejecuta:
@@ -189,5 +187,3 @@ El sistema sigue una arquitectura de microservicios, separando las responsabilid
     ```bash
     docker-compose down -v
     ```
-    
-z
