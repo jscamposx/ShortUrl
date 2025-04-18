@@ -2,12 +2,12 @@
 
 Este proyecto implementa un backend para un servicio acortador de URLs utilizando una arquitectura de microservicios con Spring Boot y Spring Cloud.
 
-## 📜 Índice
+## 📑 Índice
 
-* [🚀 Resumen General](#resumen-general)
-* [🛠️ Tecnologías Utilizadas](#tecnologías-utilizadas)
-* [🏛️ Arquitectura de Microservicios](#arquitectura-de-microservicios)
-* [➡️ Flujo de Datos Típico](#flujo-de-datos-típico)
+* [🚀 Resumen General](#-resumen-general)
+* [🛠️ Tecnologías Utilizadas](#-tecnologías-utilizadas)
+* [🏛️ Arquitectura de Microservicios](#-arquitectura-de-microservicios)
+* [➡️ Flujo de Datos Típico](#4-flujo-de-datos-típico)
 * [🧩 Componentes Detallados](#5-🧩-componentes-detallados)
     * [🐳 docker-compose.yml](#51-docker-composeyml)
     * [⚙️ configuration (Config Server)](#52-configuration-config-server)
@@ -19,6 +19,7 @@ Este proyecto implementa un backend para un servicio acortador de URLs utilizand
     * [⚡ cache (Redis)](#58-cache-redis)
     * [📄 mysql-init/schema.sql](#59-mysql-initschemasql)
 * [🔧 Configuración y Ejecución](#6-🔧-configuración-y-ejecución)
+
 
 ---
 ## 1. 🚀 Resumen General
