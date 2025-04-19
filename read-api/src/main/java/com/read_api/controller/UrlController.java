@@ -1,16 +1,16 @@
 package com.read_api.controller;
 
 import com.read_api.service.UrlService;
-import org.springframework.http.HttpHeaders; // Importar
-import org.springframework.http.HttpStatus; // Importar
+import org.springframework.http.HttpHeaders; 
+import org.springframework.http.HttpStatus; 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URI; // Importar
-import java.net.URISyntaxException; // Importar (opcional, para manejo de error si prefieres)
+import java.net.URI; 
+import java.net.URISyntaxException; 
 
 @RestController
 @RequestMapping("/read")
