@@ -60,7 +60,7 @@ public class GlobalExceptionHandler {
                 LocalDateTime.now(),
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
                 HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
-                "An internal error occurred while processing your request.", // Mensaje genérico al usuario
+                "An internal error occurred while processing your request.", 
                 request.getRequestURI()
         );
         log.error("Database operation failed: {}", ex.getMessage(), ex.getCause() != null ? ex.getCause() : ex);
