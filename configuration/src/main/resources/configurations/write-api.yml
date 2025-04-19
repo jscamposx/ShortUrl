@@ -6,10 +6,10 @@ spring:
   application:
     name: write-api
   datasource:
-    url: jdbc:mysql://db:3306/shortener?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    username: root
-    password: 123
     driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db:3306/shortener?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
   jpa:
     show-sql: true
     hibernate:

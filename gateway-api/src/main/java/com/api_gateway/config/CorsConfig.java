@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 @Configuration
 public class CorsConfig {
-    private final String[] allowedOrigins = {"*", "http://localhost:3000"};
+    private final String[] allowedOrigins = {"*", "http://localhost:3000"};  //el * lo puse, porque no tengo dominios predifinidos (No se debe de hacer)
 
     @Bean
     public CorsWebFilter corsWebFilter() {

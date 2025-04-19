@@ -15,4 +15,4 @@ COPY --from=builder /workspace/read-api/target/read-api-*.jar app.jar
 
 EXPOSE 8081
 
-ENTRYPOINT ["sh", "-c", "-jar /app/app.jar"]
+ENTRYPOINT ["sh", "-c", "java -jar app.jar"]

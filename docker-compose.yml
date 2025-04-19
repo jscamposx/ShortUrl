@@ -99,6 +99,8 @@ services:
       SPRING_CONFIG_IMPORT: optional:configserver:http://configuration:8888
     networks:
       - shorten-net
+    env_file:
+      - .env
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8082/actuator/health"]
       interval: 30s
@@ -129,13 +131,15 @@ services:
       SPRING_CONFIG_IMPORT: optional:configserver:http://configuration:8888
     networks:
       - shorten-net
+    env_file:
+      - .env
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
       interval: 30s
       timeout: 10s
       retries: 5
       start_period: 40s
-    deploy: # Añadido
+    deploy:
       resources:
         limits:
           cpus: '1.0'

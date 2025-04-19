@@ -155,6 +155,7 @@ El sistema sigue una arquitectura de microservicios, separando las responsabilid
 3.  **🔑 Archivo `.env`**:
     Crea un archivo llamado `.env` en la raíz del proyecto (`Shorten-BackEnd/`) con el siguiente contenido, reemplazando `tu_contraseña_segura` por una contraseña robusta:
     ```dotenv
+    MYSQL_USER:tu_usuario de bd
     MYSQL_PASSWORD=tu_contraseña_segura
     ```
 
@@ -173,12 +174,12 @@ El sistema sigue una arquitectura de microservicios, separando las responsabilid
 6.  **💻 Uso de la API**:
     * **Acortar una URL** ✍️:
         ```bash
-        curl -X POST "http://localhost:8083/write/shorten?longUrl=[https://www.ejemplo.com/una/url/muy/larga](https://www.ejemplo.com/una/url/muy/larga)"
+         POST "http://localhost:8083/write/shorten?longUrl=[https://www.ejemplo.com/una/url/muy/larga](https://www.ejemplo.com/una/url/muy/larga)"
         ```
       Esto devolverá el `shortId` generado (ej. `aBcDe`).
     * **Resolver una URL corta** 📖:
         ```bash
-        curl -L "http://localhost:8083/read/{shortId}"
+          GET "http://localhost:8083/read/{shortId}"
         ```
       Reemplaza `{shortId}` con el ID obtenido. El comando `curl -L` seguirá la redirección si el servicio la implementara, o en este caso, mostrará la URL larga devuelta. *(Nota: Este backend actualmente devuelve la URL larga en el cuerpo de la respuesta, no una redirección HTTP 3xx)*.
 

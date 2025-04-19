@@ -15,4 +15,5 @@ COPY --from=builder /workspace/gateway-api/target/gateway-api-*.jar app.jar
 
 EXPOSE 8083
 
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+
+ENTRYPOINT ["sh", "-c", "java -jar app.jar"]
