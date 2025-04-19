@@ -159,10 +159,6 @@ services:
         condition: service_healthy
       cache:
         condition: service_healthy
-      read-api:
-        condition: service_healthy
-      write-api:
-        condition: service_healthy
     environment:
       SPRING_CONFIG_IMPORT: optional:configserver:http://configuration:8888
     networks:

@@ -8,7 +8,7 @@ RUN mvn clean package -pl :read-api -am -DskipTests
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
-RUN apk add --no-cache netcat-openbsd
+
 RUN apk add --no-cache curl
 
 COPY --from=builder /workspace/read-api/target/read-api-*.jar app.jar
